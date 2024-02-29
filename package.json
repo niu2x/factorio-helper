@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "bin": {
     "factorio-helper": "./index.js"
   },
@@ -20,6 +19,7 @@
   "author": "niu2x",
   "license": "MIT",
   "dependencies": {
+    "factorio-blueprint": "^2.6.5",
     "logic-solver": "^2.0.1"
   }
 }
