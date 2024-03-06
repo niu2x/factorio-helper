@@ -41,32 +41,48 @@ class FactorioSolver {
 				this.solver.require(Logic.implies(is_belt, is_used))
 			}
 		}
+
+
+		for (var x = 0; x < this.map_width; x++) {
+			for (var y = 0; y < this.map_height; y++) {
+
+				let belt = this.getBooleanVarName('belt', x, y)
+				let used = this.getBooleanVarName('used', x, y)
+
+				let is_belt = belt;
+				let is_used = used;
+
+				this.solver.require(Logic.implies(is_belt, is_used))
+			}
+		}
+		
+
+		this.solver.require(this.getBooleanVarName("belt", 1, 1))
 	}
 
 	encode() {
+
+		let sol = this.solver.solve();
+		let true_vars = sol.getTrueVars();
+
+
 		let my_blueprint = new Blueprint();
 
-		// for (var x = 0; x < this.map_width; x++) {
-		// 	for (var y = 0; y < this.map_height; y++) {
-		// 		my_blueprint.createEntity('refined-concrete', {
-		// 			'x': x + 1,
-		// 			'y': y + 1,
-		// 		})
+		for (var x = 0; x < this.map_width; x++) {
+			for (var y = 0; y < this.map_height; y++) {
+				let belt = this.getBooleanVarName('belt', x, y)
 
-		// 		break;
-		// 	}
-		// 	break;
-		// }
-		// 
-		
-			my_blueprint.createEntity('refined-concrete', {
-				'x': 1,
-				'y':  1,
-			})
+				if (true_vars.includes(belt)) {
 
+					my_blueprint.createEntity('transport-belt', {
+						'x': x ,
+						'y': y ,
+					})
+				}
 
+			}
+		}
 
-console.log(my_blueprint)
 		return my_blueprint.encode()
 	}
 
