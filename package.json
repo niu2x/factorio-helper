@@ -19,7 +19,6 @@
   "author": "niu2x",
   "license": "MIT",
   "dependencies": {
-    "factorio-blueprint": "^2.6.5",
     "logic-solver": "^2.0.1"
   }
 }
