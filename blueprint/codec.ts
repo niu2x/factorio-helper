@@ -2,26 +2,25 @@
 import zlib from "zlib"
 
 export class BlueprintCodec {
+	version: string = '0';
 
-	version = '0';
-
-	encode(blueprint) {
+	encode(blueprint: object) {
 		const encodedData = this._encode(blueprint)
 		const blueprintString = this._prependVersion(encodedData)
 		return blueprintString;
 	}
 
-	decode(blueprintString) {
+	decode(blueprintString: string) {
 	    const encodedData = this._removeVersion(blueprintString)
 	    const blueprintData = this._decode(encodedData)
 	    return blueprintData;
 	}
 
-	_prependVersion(encodedData) {
+	_prependVersion(encodedData : string) {
 		return this.version + encodedData;
 	}
 
-	_removeVersion(blueprintString) {
+	_removeVersion(blueprintString: string) {
 		const prefix = blueprintString.slice(0, this.version.length);
 	    if (prefix !== this.version) {
 	        throw new Error('Invalid blueprint string prefix');
@@ -29,17 +28,14 @@ export class BlueprintCodec {
 	    return blueprintString.slice(this.version.length);
 	}
 
-	_decode(encodedData) {
+	_decode(encodedData: string) {
 		const decodedData = Buffer.from(encodedData, 'base64');
 	    const decompressedData = zlib.inflateSync(decodedData);
 	    const jsonString = decompressedData.toString('utf-8');
 	    const blueprintData = JSON.parse(jsonString);
 	    return blueprintData;
 	}
-
-	
-
-	_encode(blueprint) {
+	_encode(blueprint: object) {
 		const jsonString = JSON.stringify(blueprint);
 		// Zlib压缩
 		const compressedData = zlib.deflateSync(Buffer.from(jsonString, 'utf-8'));
@@ -51,7 +47,5 @@ export class BlueprintCodec {
 		const blueprintString = '0e' + encodedData;
 		return blueprintString;
 	}
-
-	
 }
 

@@ -101,3 +101,28 @@
 // // }, Blueprint.UP);
 
 // // console.log(myBlueprint.encode())
+
+import {Item, Direction} from "./blueprint/type"
+import {BlueprintCodec} from "./blueprint/codec"
+import {BlueprintBuilder} from "./blueprint/builder"
+
+let codec = new BlueprintCodec()
+let builder = new BlueprintBuilder()
+builder.setLabel("MyName")
+builder.addEntity({
+	type: Item.EXPRESS_TRANSPORT_BELT,
+	pos: {
+		x: 0,
+		y: 0,
+	}
+})
+
+builder.addEntity({
+	type: Item.EXPRESS_TRANSPORT_BELT,
+	pos: {
+		x: 1,
+		y: 0,
+	}
+})
+
+console.log(codec.encode(builder.build()))
