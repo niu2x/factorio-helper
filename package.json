@@ -1,11 +1,12 @@
 {
   "name": "factorio-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "niu2x's factorio-helper",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "test": "node tests/codec.test.js"
+    "test": "node tests/codec.test.js",
+    "build": "npx tsc"
   },
   "bin": {
     "factorio-helper": "dist/bin/main.js"
@@ -27,5 +28,9 @@
     "@types/node": "^22.8.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.6.3"
-  }
+  },
+  "files": [
+    "dist/",
+    "LICENSE"
+  ]
 }
