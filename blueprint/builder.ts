@@ -1,4 +1,4 @@
-import {Item, getItemName, Direction} from "./type"
+import {Item, getItemName, Direction, getDirectionValue} from "./type"
 
 type Position = {
 	x: number,
@@ -16,7 +16,7 @@ type BlueprintData = {
 	icons: [];
 	item: "blueprint";
 	label: string;
-	version: 0;
+	version: number;
 };
 
 type Blueprint = {
@@ -37,7 +37,7 @@ export class BlueprintBuilder {
 			icons: [],
 			item: "blueprint",
 			label: this.label,
-			version: 0,
+			version: 562949954142211,
 		}
 		for(let i = 0; i < this.entities.length; i ++) {
 			let e = this.entities[i];
@@ -46,8 +46,9 @@ export class BlueprintBuilder {
 				name: getItemName(e.type),
 				position: e.pos,
 			}
-			if(e.direction) {
-				
+			if(e.direction != null) {
+				x.direction = getDirectionValue(e.direction)
+				console.log("x.direction", x.direction)
 			}
 			bp.entities.push(x)
 		}

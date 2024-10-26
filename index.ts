@@ -114,7 +114,8 @@ builder.addEntity({
 	pos: {
 		x: 0,
 		y: 0,
-	}
+	},
+	direction: Direction.UP,
 })
 
 builder.addEntity({
@@ -122,7 +123,25 @@ builder.addEntity({
 	pos: {
 		x: 1,
 		y: 0,
-	}
+	},
+	direction: Direction.DOWN,
 })
+builder.addEntity({
+	type: Item.EXPRESS_TRANSPORT_BELT,
+	pos: {
+		x: 2,
+		y: 0,
+	},
+	direction: Direction.LEFT,
+})
+builder.addEntity({
+	type: Item.EXPRESS_TRANSPORT_BELT,
+	pos: {
+		x: 3,
+		y: 0,
+	},
+	direction: Direction.RIGHT,
+})
+
 
 console.log(codec.encode(builder.build()))

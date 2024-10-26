@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import {BlueprintCodec} from "../blueprint/codec"
+
 import {
   Command
 } from 'commander';
@@ -13,10 +15,13 @@ program
   .version('1.0.0');
 
 program
-  .command('set-signing <os_platform> <signing_name>')
-  .description('更改证书')
-  .action(async (osPlatform, signingName) => {
-    await setSigning(getRepo(), osPlatform, signingName);
+  .command('decode <blueprint>')
+  .description('把蓝图字符串解码成Json')
+  .action(async (blueprint) => {
+    let codec = new BlueprintCodec();
+    let bp = codec.decode(blueprint)
+    bp = JSON.stringify(bp, null, 2)
+    console.log(bp)
   });
 
 // program

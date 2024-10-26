@@ -19,16 +19,16 @@ enum Direction {
 
 function getDirectionValue(d: Direction): number {
 	if(d == Direction.LEFT) {
-		return 0;
+		return 12;
 	}
 	else if(d == Direction.RIGHT) {
-		return 0;
+		return 4;
 	}
 	else if(d == Direction.UP) {
 		return 0;
 	}
 	else {
-		return 0;
+		return 8;
 	}
 }
 
