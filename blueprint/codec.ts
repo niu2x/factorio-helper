@@ -1,4 +1,5 @@
-// example 
+// example
+import {Buffer} from "buffer"
 import zlib from "zlib"
 
 export class BlueprintCodec {
@@ -37,8 +38,12 @@ export class BlueprintCodec {
 	}
 	_encode(blueprint: object) {
 		const jsonString = JSON.stringify(blueprint);
+
+		// console.log("jsonString", jsonString)
+		// console.log("Buffer.from(jsonString, 'utf-8')", Buffer.from(jsonString, 'utf-8'))
 		// Zlib压缩
-		const compressedData = zlib.deflateSync(Buffer.from(jsonString, 'utf-8'));
+		// const compressedData = zlib.deflateSync(Buffer.from(jsonString, 'utf-8'));
+		const compressedData = zlib.deflateSync(jsonString);
 		// Base64编码
 		const encodedData = compressedData.toString('base64');
 
