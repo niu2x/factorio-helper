@@ -5,7 +5,6 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "test": "node tests/codec.test.js",
     "build-web": "npx webpack",
     "build": "npx tsc"
   },
@@ -33,13 +32,16 @@
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
     "html-webpack-plugin": "^5.6.3",
+    "process": "^0.11.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0",
     "stream-browserify": "^3.0.0",
     "ts-loader": "^9.5.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.6.3",
     "webpack": "^5.95.0",
+    "webpack-assets-manifest": "^5.2.1",
     "webpack-cli": "^5.1.4"
   },
   "files": [

@@ -1,4 +1,5 @@
-// example 
+// example
+import {Buffer} from "buffer"
 import zlib from "zlib"
 
 export class BlueprintCodec {
