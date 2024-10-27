@@ -20,8 +20,12 @@ function BlueprintDecoder() {
 	    	bp = JSON.stringify(bp, null, 2)
 			setDecodeValue(bp);
 		}
-		catch(e) {
-			setDecodeValue(JSON.stringify(e));
+		catch(err: any) {
+			setDecodeValue(JSON.stringify({
+				msg: err.message,
+				name: err.name,
+				stack: err.stack,
+			}));
 		}
 	}
 
