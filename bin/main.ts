@@ -31,24 +31,6 @@ program
 //     await staticAssets(getRepo(), osPlatform, output);
 //   });
 
-// program
-//   .command('hap-info <hap>')
-//   .option('-v, --version', '提取版本号')
-//   .option('--icon', '提取icon')
-//   .option('-o, --out <output>', '输出路径')
-//   .option('--app', '是鸿蒙的app包')
-//   .description('提取hap文件的某些信息')
-//   .action(async (hap, options) => {
-//     await getHapInfo(hap, options);
-//   });
-
-// program
-//   .command('lua-encrypt <file> <output>')
-//   .description('加密lua')
-//   .action(async (file, output) => {
-//     await lua.encrypt(file, output);
-//   });
-
 // 解析命令行参数
 // dotenv.config();
 program.parse(process.argv);
