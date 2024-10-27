@@ -48,7 +48,6 @@ export class BlueprintBuilder {
 			}
 			if(e.direction != null) {
 				x.direction = getDirectionValue(e.direction)
-				console.log("x.direction", x.direction)
 			}
 			bp.entities.push(x)
 		}

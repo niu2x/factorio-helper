@@ -1,19 +1,19 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	entry: './index.ts',
+	entry: './web/index.tsx',
 	module: {
-		rules: [
-			{
-				test: /\.ts$/,
-				use: 'ts-loader'
-			}
-		]
+		rules: [{
+			test: /\.tsx?$/,
+			use: 'ts-loader',
+			exclude: /node_modules/,
+		}]
 	},
 	resolve: {
-		extensions: ['.ts', '.js'],
-		fallback: { 
-			"zlib": require.resolve("browserify-zlib") ,
+		extensions: ['.ts', '.js', '.tsx'],
+		fallback: {
+			"zlib": require.resolve("browserify-zlib"),
 			"buffer": require.resolve("buffer/"),
 			"assert": require.resolve("assert/"),
 			"stream": require.resolve("stream-browserify")
@@ -22,5 +22,9 @@ module.exports = {
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, 'dist-web')
-	}
+	},
+	plugins: [new HtmlWebpackPlugin({
+		title: 'project',
+		template: 'web/index.html'
+	})],
 }
